@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.pacientesys.controller.PacienteController"
+            prefWidth="820" prefHeight="560" style="-fx-background-color: white;">
+  <!-- Topo -->
+  <top>
+    <StackPane style="-fx-background-color: #f5f5f5;">
+      <Label text="Gerenciador de Produtos"
+             style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+      <VBox spacing="12" fillWidth="true">
+         <padding>
+           <Insets top="20" right="20" bottom="20" left="20"/>
+         </padding>
+         <!-- ... filhos da VBox ... -->
+      </VBox>
+    </StackPane>
+  </top>
+
+  <!-- Centro: formulário + botões + tabela -->
+  <center>
+    <VBox spacing="12" fillWidth="true">
+      <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+      </padding>
+
+      <!-- Formulário -->
+      <GridPane hgap="12" vgap="10">
+        <columnConstraints>
+          <ColumnConstraints percentWidth="20"/>
+          <ColumnConstraints percentWidth="80"/>
+        </columnConstraints>
+
+        <children>
+          <Label text="Código" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+          <TextField fx:id="txtCodigo" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                     promptText="Ex.: P001" />
+
+          <Label text="Nome" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+          <TextField fx:id="txtNome" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                     promptText="Nome do produto" />
+
+          <Label text="Preço" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+          <TextField fx:id="txtPreco" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                     promptText="Ex.: 199.90" />
+
+          <Label text="Categoria" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+          <ComboBox fx:id="cbCategoria" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                    promptText="Selecione..." />
+        </children>
+      </GridPane>
+
+      <!-- Botões -->
+      <HBox spacing="10">
+        <children>
+          <Button fx:id="btnCadastrar" text="Cadastrar" maxWidth="Infinity"
+                  HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" />
+          <Button fx:id="btnExcluir" text="Excluir" maxWidth="Infinity"
+                  HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" />
+          <Button fx:id="btnConsultar" text="Consultar" maxWidth="Infinity"
+                  HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" />
+          <Button fx:id="btnListar" text="Listar Todos" maxWidth="Infinity"
+                  HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" />
+        </children>
+      </HBox>
+
+
+      <!-- Tabela -->
+      <TableView fx:id="tabelaProdutos" VBox.vgrow="ALWAYS">
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <columns>
+          <!-- suas colunas -->
+          <TableColumn text="Código">
+            <cellValueFactory>
+              <PropertyValueFactory property="codigo"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn text="Nome">
+            <cellValueFactory>
+              <PropertyValueFactory property="nome"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn text="Preço">
+            <cellValueFactory>
+              <PropertyValueFactory property="preco"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn text="Categoria">
+            <cellValueFactory>
+              <PropertyValueFactory property="categoria"/>
+            </cellValueFactory>
+          </TableColumn>
+        </columns>
+      </TableView>
+    </VBox>
+  </center>
+</BorderPane>
