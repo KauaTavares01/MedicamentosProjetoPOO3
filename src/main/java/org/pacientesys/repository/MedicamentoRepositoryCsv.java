@@ -10,9 +10,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MedicamentoRepositoryCsv {
+    private final Path dir;
     private final Path path;
-    public MedicamentoRepositoryCsv(String fileName){
-        this.path = Paths.get(System.getProperty("user.home"), fileName); // ~/medicamentos.csv
+
+    public MedicamentoRepositoryCsv(String fileName) {
+
+        // CRIEI A PASTA: "infoCSV" dentro do diretório do projeto , PRA FICAR MAIS ORGAIZADO APRA MIM
+        this.dir  = Paths.get(System.getProperty("user.dir"), "infoCSV");
+        this.path = dir.resolve(fileName);
+        try {
+            Files.createDirectories(dir); // garante que a pasta exista
+        } catch (IOException e) {
+            throw new UncheckedIOException("Não foi possível criar a pasta infoCSV", e);
+        }
     }
 
     public List<Medicamento> load() {
