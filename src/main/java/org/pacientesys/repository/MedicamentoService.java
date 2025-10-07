@@ -54,4 +54,11 @@ public class MedicamentoService {
                         m -> m.getPreco().multiply(BigDecimal.valueOf(m.getQuantidadeEstoque())),
                         BigDecimal::add)));
     }
+    public Map<Boolean, List<Medicamento>> controladosVsNao() {
+        return cache.stream()
+                .collect(Collectors.groupingBy(Medicamento::isControlado)); // Agrupa por controlado (true ou false)
+    }
+
+
+
 }

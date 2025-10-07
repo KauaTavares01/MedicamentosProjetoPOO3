@@ -2,7 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,107 +19,160 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="560" prefWidth="820" style="#000000: white; -fx-background-color: #000000;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="org.pacientesys.controller.ProdutoController">
-  <!-- Topo -->
-  <top>
-    <StackPane style="-fx-background-color: #f5f5f5;">
-      <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Gerenciador de Produtos" textFill="WHITE" />
-      <VBox fillWidth="true" spacing="12">
-         <padding>
-           <Insets bottom="20" left="20" right="20" top="20" />
-         </padding>
-         <!-- ... filhos da VBox ... -->
-      </VBox>
-    </StackPane>
-  </top>
+<!-- Importa o CheckBox -->
 
-  <!-- Centro: formulário + botões + tabela -->
-  <center>
-    <VBox fillWidth="true" spacing="12">
-      <padding>
-        <Insets bottom="20" left="20" right="20" top="20" />
-      </padding>
+<BorderPane prefHeight="569.0" prefWidth="760.0" style="#000000: white; -fx-background-color: #000000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pacientesys.controller.ProdutoController">
+    <!-- Topo -->
+    <top>
+        <StackPane style="-fx-background-color: #f5f5f5;">
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Gerenciador de Medicamentos " textFill="WHITE" />
+            <VBox fillWidth="true" spacing="12">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+            </VBox>
+        </StackPane>
+    </top>
 
-      <!-- Formulário -->
-      <GridPane hgap="12" vgap="10">
-        <columnConstraints>
-          <ColumnConstraints percentWidth="20" />
-          <ColumnConstraints percentWidth="80" />
-        </columnConstraints>
+    <!-- Centro: formulário + botões + tabela -->
+    <center>
+        <VBox fillWidth="true" spacing="12">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
 
-        <children>
-          <Label text="Código" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <!-- Formulário -->
+            <GridPane hgap="12" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="20" />
+                    <ColumnConstraints percentWidth="80" />
+                </columnConstraints>
+
+                <children>
+                    <Label text="Código" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <TextField fx:id="txtCodigo" promptText="Ex.: P001" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label text="Nome" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <TextField fx:id="txtNome" promptText="Nome do produto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Preço" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <TextField fx:id="txtPreco" promptText="Ex.: 199.90" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label text="Validade" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <DatePicker fx:id="txtValidade" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <Label text="Estoque" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <TextField fx:id="txtEstoque" promptText="Ex.: 50" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label text="Fornecedor" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <ComboBox fx:id="cbCategoria" promptText="Selecione..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                    <!-- Adicionando o CheckBox para "Controlado" -->
+                    <Label text="Controlado" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                        <font>
+                            <Font name="Arial Black" size="12.0" />
+                        </font></Label>
+                    <CheckBox fx:id="chkControlado" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                </children>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+            </GridPane>
+
+            <!-- Botões -->
+            <HBox spacing="10">
+                <children>
+                    <Button fx:id="btnCadastrar" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Cadastrar" HBox.hgrow="ALWAYS">
                   <font>
                      <Font name="Arial Black" size="12.0" />
-                  </font></Label>
-          <TextField fx:id="txtCodigo" promptText="Ex.: P001" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-          <Label text="Nome" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                  </font></Button>
+                    <Button fx:id="btnExcluir" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Excluir" HBox.hgrow="ALWAYS">
                   <font>
                      <Font name="Arial Black" size="12.0" />
-                  </font></Label>
-          <TextField fx:id="txtNome" promptText="Nome do produto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-          <Label text="Preço" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                  </font></Button>
+                    <Button fx:id="btnConsultar" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Consultar" HBox.hgrow="ALWAYS">
                   <font>
                      <Font name="Arial Black" size="12.0" />
-                  </font></Label>
-          <TextField fx:id="txtPreco" promptText="Ex.: 199.90" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-          <Label text="Categoria" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                  </font></Button>
+                    <Button fx:id="btnListar" maxWidth="Infinity" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Listar Todos" HBox.hgrow="ALWAYS">
                   <font>
                      <Font name="Arial Black" size="12.0" />
-                  </font></Label>
-          <ComboBox fx:id="cbCategoria" promptText="Selecione..." GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        </children>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
-      </GridPane>
+                  </font></Button>
+                    <Button fx:id="btnRelatorios" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Relatórios" HBox.hgrow="ALWAYS">
+                  <font>
+                     <Font name="Arial Black" size="12.0" />
+                  </font></Button>
+                </children>
+            </HBox>
 
-      <!-- Botões -->
-      <HBox spacing="10">
-        <children>
-          <Button fx:id="btnCadastrar" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Cadastrar" HBox.hgrow="ALWAYS" />
-          <Button fx:id="btnExcluir" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Excluir" HBox.hgrow="ALWAYS" />
-          <Button fx:id="btnConsultar" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Consultar" HBox.hgrow="ALWAYS" />
-          <Button fx:id="btnListar" maxWidth="Infinity" style="-fx-background-color: #e9e9e9; -fx-text-fill: #333;" text="Listar Todos" HBox.hgrow="ALWAYS" />
-        </children>
-      </HBox>
-
-      
             <!-- Tabela -->
-      <TableView fx:id="tabelaProdutos" style="-fx-background-color: #d6d6c2;" VBox.vgrow="ALWAYS">
-        <columnResizePolicy>
-          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-        </columnResizePolicy>
-        <columns>
-          <!-- suas colunas -->
-          <TableColumn text="Código">
-            <cellValueFactory>
-              <PropertyValueFactory property="codigo" />
-            </cellValueFactory>
-          </TableColumn>
-          <TableColumn text="Nome">
-            <cellValueFactory>
-              <PropertyValueFactory property="nome" />
-            </cellValueFactory>
-          </TableColumn>
-          <TableColumn text="Preço">
-            <cellValueFactory>
-              <PropertyValueFactory property="preco" />
-            </cellValueFactory>
-          </TableColumn>
-          <TableColumn text="Categoria">
-            <cellValueFactory>
-              <PropertyValueFactory property="categoria" />
-            </cellValueFactory>
-          </TableColumn>
-        </columns>
-      </TableView>
-    </VBox>
-  </center>
+            <TableView fx:id="tabelaProdutos" prefHeight="217.0" prefWidth="800.0" style="-fx-background-color: #d6d6c2;" VBox.vgrow="ALWAYS">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
+                <columns>
+                    <TableColumn prefWidth="69.0" text="Código">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="codigo" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="193.0" text="Nome">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="nome" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="169.0" text="Fornecedor">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fornecedor" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="58.0" text="Preço">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="preco" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="86.0" text="Validade">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="dataValidade" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn prefWidth="61.0" text="Estoque">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="quantidadeEstoque" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <!-- Coluna para mostrar se é controlado -->
+                    <TableColumn prefWidth="45.0" text="Controlado">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="controlado" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
 </BorderPane>
